@@ -27,7 +27,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.use('/post', postRoutes);
+app.use('/posts', postRoutes);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });

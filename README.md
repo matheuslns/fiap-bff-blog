@@ -1,42 +1,68 @@
-# FIAP BFF – Deploy Automático com Github Actions e Render.com
 
-Este projeto faz parte de um tutorial prático de Backend For Frontend (BFF) utilizando Node.js e Express.
+# 🌐 BFF - Backend For Frontend (Blog API)
 
----
+Este é um **Backend For Frontend (BFF)** simples desenvolvido em **Node.js + Express**, que serve como intermediário entre o frontend do blog em Vue.js e a [NewsAPI.org](https://newsapi.org/).
 
-## O que foi feito nesta branch?
+## 🧠 O que ele faz?
 
-### Configuração de Deploy Automático com Github Actions e Render.com
+- Faz requisições à API pública da **NewsAPI.org**.
+- Filtra e transforma os dados para um formato mais simples.
+- Retorna um array de postagens para ser consumido pelo frontend.
 
-Nesta branch, foi configurada uma **Github Action** para realizar o deploy automático da aplicação no [Render.com](https://render.com/). Agora, sempre que houver um push ou merge na branch principal do repositório, a action é executada e faz o deploy da versão mais recente da aplicação no ambiente configurado do Render.
+## 📦 Tecnologias utilizadas
 
-- **O que é Github Actions?**  
-  Github Actions é uma plataforma de automação de workflows dentro do Github, permitindo criar pipelines de integração contínua (CI) e entrega contínua (CD) para automatizar testes, builds e deploys.
+- Node.js
+- Express
+- Axios
+- dotenv (para variáveis de ambiente)
 
-- **O que é o Render.com?**  
-  Render.com é uma plataforma de cloud que facilita o deploy de aplicações web, APIs e serviços de backend, oferecendo integração simples com repositórios do Github.
+## ▶️ Como rodar o projeto localmente
 
-- **Como foi configurado?**  
-  Foi criado um arquivo de workflow na pasta `.github/workflows/` do projeto, contendo os passos necessários para instalar as dependências, rodar testes (se houver) e fazer o deploy no Render.com utilizando a API da plataforma.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/matheuslns/fiap-bff-blog.git
+   cd fiap-bff-blog
+   ```
 
----
-
-## Como executar localmente
-
-1. Instale as dependências:
+2. **Instale as dependências**:
    ```bash
    npm install
    ```
 
-2. Inicie a aplicação:
-   ```bash
-   node src/app.js
+3. **Crie um arquivo `.env` na raiz do projeto**:
+   ```
+   API_KEY=sua_chave_da_newsapi.org
    ```
 
-## O que mudou?
+4. **Execute o servidor**:
+   ```bash
+   npm start
+   ```
 
-[Clique e veja o que foi feito nesta branch](https://github.com/jaisonschmidt/fiap-bff/compare/05-configure-newrelic...06-configure-actions)
+O servidor estará disponível em: `http://localhost:3000/posts`
 
----
+## 🔗 Endpoint disponível
 
-## Parabéns, você chegou ao fim do tutorial!
+### `GET /posts`
+
+Retorna um array de objetos no seguinte formato:
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Título da notícia",
+    "description": "Resumo da notícia",
+    "content": "Conteúdo completo ou trecho",
+    "author": "Nome do autor",
+    "publishedAt": "2025-06-10T12:00:00Z",
+    "url": "https://link-da-noticia.com",
+    "urlToImage": "https://link-da-imagem.jpg"
+  },
+  ...
+]
+```
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
